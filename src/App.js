@@ -1,15 +1,11 @@
 import './App.css';
-import { useSelector, useDispatch } from 'react-redux'
 import { clearData, fetchData, incrementId, decrementId, inputId } from './features/dataSlice'
 import { useSelector, useDispatch, connect} from 'react-redux'
+import { useEffect} from 'react'
 
 const mapStateToProps = (state) => ({
   objectId: state.data.objectId
 })
-
-useEffect(() => {
-  dispatch(fetchData())
-}, [props.objectId, dispatch])
 
 
 function App() {
@@ -22,6 +18,10 @@ function App() {
       return <p>image here</p>
     }
   }
+// no idea where thsi code goes
+  useEffect(() => {
+    dispatch(fetchData())
+  }, [props.objectId, dispatch])
 
   return (
     <div className="App">

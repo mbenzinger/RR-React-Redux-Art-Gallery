@@ -1,6 +1,16 @@
 import './App.css';
 import { useSelector, useDispatch } from 'react-redux'
 import { clearData, fetchData, incrementId, decrementId, inputId } from './features/dataSlice'
+import { useSelector, useDispatch, connect} from 'react-redux'
+
+const mapStateToProps = (state) => ({
+  objectId: state.data.objectId
+})
+
+useEffect(() => {
+  dispatch(fetchData())
+}, [props.objectId, dispatch])
+
 
 function App() {
   const dispatch = useDispatch()
@@ -32,4 +42,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect(mapStateToProps)(App)

@@ -11,6 +11,13 @@ const mapStateToProps = (state) => ({
 function App() {
   const dispatch = useDispatch()
   const data = useSelector((state) => state.data)
+
+// no idea where thsi code goes
+useEffect(() => {
+  dispatch(fetchData())
+}, [props.objectId, dispatch])
+//
+
   const renderImg = () => {
     if (data.apiData) {
       return <img style={{ 'width': '100vw' }} src={data.apiData.primaryImage} alt={data.apiData.title} />
@@ -18,10 +25,7 @@ function App() {
       return <p>image here</p>
     }
   }
-// no idea where thsi code goes
-  useEffect(() => {
-    dispatch(fetchData())
-  }, [props.objectId, dispatch])
+
 
   return (
     <div className="App">
